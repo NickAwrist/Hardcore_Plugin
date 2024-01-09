@@ -1,0 +1,4 @@
+name: Hardcore_Plugin
+version: '${project.version}'
+main: nicholas.hardcore_plugin.Hardcore_Plugin
+api-version: '1.20'

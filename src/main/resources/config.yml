@@ -1,0 +1,6 @@
+
+# CONFIGURATION FILE FOR HARDCORE PLUGIN
+
+
+# Lives players will start with. Must be > 0
+lives: 1
