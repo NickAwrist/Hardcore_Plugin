@@ -2,6 +2,7 @@ package nicholas.hardcore_plugin;
 
 import org.bukkit.entity.Player;
 
+import java.util.Objects;
 import java.util.UUID;
 
 
@@ -26,5 +27,18 @@ public class HC_Player {
 
     public String getPlayerName(){return this.player;}
     public UUID getPlayerUUID(){return this.playerUUID;}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HC_Player hcPlayer = (HC_Player) o;
+        return Objects.equals(playerUUID, hcPlayer.getPlayerUUID());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(playerUUID);
+    }
 
 }
