@@ -6,6 +6,7 @@ import nicholas.hardcore_plugin.TeamsManager;
 
 import nicholas.hardcore_plugin.files.PlayerData;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -27,6 +28,12 @@ public final class Hardcore_Plugin extends JavaPlugin {
         getConfig().options().copyDefaults();
         this.saveDefaultConfig();
 
+        if(plugin.getConfig().getInt("lives") <= 0){
+            Bukkit.getLogger().severe("Hardcore | LIVES IS SET TO LESS THAN 0 IN CONFIG. IT MUST BE GREATER THAN 0!");
+            return;
+        }
+
+
         PlayerData.setup();
 
         playerList = PlayerData.loadPlayers();
@@ -35,18 +42,7 @@ public final class Hardcore_Plugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new deathEvent(), this);
 
         TeamsManager.setupScoreboard();
-
-        /* TODO
-
-              - Update player lives when death
-              - Update player data file when death
-              - Update player team when death
-              - Player death effects
-              - Set dead players to spectator
-
-
-        */
-
+        Bukkit.getLogger().info("Hardcore | Hardcore Plugin has been enabled");
     }
 
     @Override

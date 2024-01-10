@@ -3,4 +3,19 @@
 
 
 # Lives players will start with. Must be > 0
-lives: 1
+# (default: 3)
+lives: 3
+
+# Whether to use a scoreboard to assign players to teams.
+# This will change the player name color and show their lives in the player list.
+# (default: true)
+scoreboard_enabled: true
+
+# Set a player who reaches 0 lives to spectator mode.
+# (default: true)
+spectator_when_dead: true
+
+# Ban a player who reaches 0 lives.
+# (default: false)
+ban_when_dead: false
+ban_message: "You have died!"

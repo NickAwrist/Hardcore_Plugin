@@ -46,12 +46,20 @@ public class TeamsManager {
         Score score = livesObjective.getScore(player);
         score.setScore(lives);
 
+        final FileConfiguration config = Hardcore_Plugin.config();
+
+        boolean setSpectator = config.getBoolean("spectator_when_dead");
+        boolean setBan = config.getBoolean("ban_when_dead");
+
         if(currentTeam != null){
             currentTeam.removePlayer(player);
-            player.setGameMode(GameMode.SURVIVAL);
+
+            if(setSpectator) {
+                player.setGameMode(GameMode.SURVIVAL);
+            }
         }
 
-        final FileConfiguration config = Hardcore_Plugin.config();
+
         int maxLives = config.getInt("lives");
 
         double place = (double) lives / (double) maxLives;
@@ -65,7 +73,16 @@ public class TeamsManager {
             redTeam.addPlayer(player);
         }else{
             spectatorTeam.addPlayer(player);
-            player.setGameMode(GameMode.SPECTATOR);
+
+            if(setSpectator) {
+                player.setGameMode(GameMode.SPECTATOR);
+            }
+
+            if(setBan){
+                String banMessage = config.getString("ban_message");
+                player.banPlayer(banMessage);
+            }
+
         }
 
         player.setScoreboard(scoreboard);
