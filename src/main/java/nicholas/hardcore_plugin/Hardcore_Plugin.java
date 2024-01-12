@@ -2,12 +2,12 @@ package nicholas.hardcore_plugin;
 
 import nicholas.hardcore_plugin.events.deathEvent;
 import nicholas.hardcore_plugin.events.joinEvent;
-import nicholas.hardcore_plugin.TeamsManager;
-
+import nicholas.hardcore_plugin.events.respawnEvent;
 import nicholas.hardcore_plugin.files.PlayerData;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import org.jetbrains.annotations.NotNull;
@@ -38,10 +38,14 @@ public final class Hardcore_Plugin extends JavaPlugin {
 
         playerList = PlayerData.loadPlayers();
 
-        getServer().getPluginManager().registerEvents(new joinEvent(), this);
-        getServer().getPluginManager().registerEvents(new deathEvent(), this);
+        getServer().getPluginManager().registerEvents(new joinEvent(), plugin);
+        getServer().getPluginManager().registerEvents(new deathEvent(), plugin);
+        getServer().getPluginManager().registerEvents(new respawnEvent(), plugin);
 
         TeamsManager.setupScoreboard();
+
+        new GracePeriodTask().runTaskTimer(this, 0L, 1200L);
+
         Bukkit.getLogger().info("Hardcore | Hardcore Plugin has been enabled");
     }
 

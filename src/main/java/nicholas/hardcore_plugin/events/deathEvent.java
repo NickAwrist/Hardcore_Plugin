@@ -25,11 +25,12 @@ public class deathEvent implements Listener {
         HC_Player player = playerList.get(playerUUID);
 
         if(player != null){
-            player.updateLives(-1);
-
-            if(player.getLives() <= 0){
-                Bukkit.getLogger().warning("Player has died!");
+            if(player.getGraceEnabled()){
+                return;
             }
+
+            // Update Lives logic
+            player.updateLives(-1);
 
             Hardcore_Plugin.updatePlayers(playerList);
             TeamsManager.assignPlayerToTeam(e.getPlayer(), player.getLives());
@@ -38,15 +39,6 @@ public class deathEvent implements Listener {
             for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                 p.playSound(p.getLocation(), Sound.ENTITY_LIGHTNING_BOLT_THUNDER, 1.0F, 1.0F);
             }
-
-
-
-
         }
-
-
-
-
     }
-
 }

@@ -15,6 +15,11 @@ scoreboard_enabled: true
 # (default: true)
 spectator_when_dead: true
 
+# Enable/Disable a grace period for a player when they first join the server. Time is in minutes
+# (default: true, 120)
+grace_period: true
+grace_period_length: 120
+
 # Ban a player who reaches 0 lives.
 # (default: false)
 ban_when_dead: false

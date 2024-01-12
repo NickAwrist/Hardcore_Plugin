@@ -1,6 +1,7 @@
 package nicholas.hardcore_plugin.events;
 
 import nicholas.hardcore_plugin.HC_Player;
+import nicholas.hardcore_plugin.Msg;
 import nicholas.hardcore_plugin.TeamsManager;
 import nicholas.hardcore_plugin.Hardcore_Plugin;
 
@@ -20,24 +21,24 @@ public class joinEvent implements Listener {
     public void PlayerJoin(PlayerJoinEvent e){
 
         final HashMap<UUID, HC_Player> playerList = Hardcore_Plugin.getPlayers();
-
-        HC_Player newPlayer = new HC_Player(e.getPlayer());
-
         final FileConfiguration config = Hardcore_Plugin.config();
 
-        if(!playerList.containsKey(newPlayer.getPlayerUUID())){
-            Hardcore_Plugin.addPlayer(newPlayer);
+        HC_Player hcp = new HC_Player(e.getPlayer());
+        int currentGrace = hcp.getCurrentGrace();
+
+        if(!playerList.containsKey(hcp.getPlayerUUID())){
+            Hardcore_Plugin.addPlayer(hcp);
+
             TeamsManager.assignPlayerToTeam(e.getPlayer(), config.getInt("lives"));
         } else{
-            newPlayer = playerList.get(e.getPlayer().getUniqueId());
-            TeamsManager.assignPlayerToTeam(e.getPlayer(), newPlayer.getLives());
+            hcp = playerList.get(e.getPlayer().getUniqueId());
+            TeamsManager.assignPlayerToTeam(e.getPlayer(), hcp.getLives());
+
         }
 
-        Bukkit.getLogger().info("Player Joined");
-
-
-
-
+        if(hcp.getGraceEnabled()){
+            Msg.send(e.getPlayer(), "&rYour grace period is enabled. You have &2"+currentGrace+"&r minutes left.");
+        }
     }
 
 }
