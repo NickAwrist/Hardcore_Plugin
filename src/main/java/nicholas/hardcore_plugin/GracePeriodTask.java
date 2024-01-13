@@ -59,6 +59,8 @@ public class GracePeriodTask extends BukkitRunnable {
                 }
             }
 
+            Hardcore_Plugin.updatePlayers(playerList);
+
 
 
         }

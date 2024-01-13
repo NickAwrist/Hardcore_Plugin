@@ -7,7 +7,6 @@ import nicholas.hardcore_plugin.files.PlayerData;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import org.jetbrains.annotations.NotNull;
@@ -63,6 +62,7 @@ public final class Hardcore_Plugin extends JavaPlugin {
     }
 
     public static void updatePlayers(HashMap<UUID, HC_Player> updatedPlayerList){
+        playerList = updatedPlayerList;
         PlayerData.savePlayerData(updatedPlayerList);
     }
 

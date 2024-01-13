@@ -5,7 +5,6 @@ import nicholas.hardcore_plugin.Msg;
 import nicholas.hardcore_plugin.TeamsManager;
 import nicholas.hardcore_plugin.Hardcore_Plugin;
 
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -32,6 +31,7 @@ public class joinEvent implements Listener {
             TeamsManager.assignPlayerToTeam(e.getPlayer(), config.getInt("lives"));
         } else{
             hcp = playerList.get(e.getPlayer().getUniqueId());
+            currentGrace = hcp.getCurrentGrace();
             TeamsManager.assignPlayerToTeam(e.getPlayer(), hcp.getLives());
 
         }
