@@ -2,6 +2,7 @@ package nicholas.hardcore_plugin.events;
 
 import nicholas.hardcore_plugin.HC_Player;
 import nicholas.hardcore_plugin.Hardcore_Plugin;
+import nicholas.hardcore_plugin.Msg;
 import nicholas.hardcore_plugin.TeamsManager;
 
 import org.bukkit.Bukkit;
@@ -31,6 +32,24 @@ public class deathEvent implements Listener {
 
             // Update Lives logic
             player.updateLives(-1);
+
+            int maxLives = Hardcore_Plugin.config().getInt("lives");
+            int lives = player.getLives();
+
+            double place = (double) lives / (double) maxLives;
+            place = Math.floor(place * 100) / 100.0;
+
+            char color = '3';
+
+            if(place > 0.66){
+                color = 'a';
+            }else if(place > 0.33){
+                color = '6';
+            }else if(place > 0.0) {
+                color = 'c';
+            }
+
+            Msg.send(e.getPlayer(), "You have " + color + lives + " lives remaining");
 
             Hardcore_Plugin.updatePlayers(playerList);
             TeamsManager.assignPlayerToTeam(e.getPlayer(), player.getLives());
