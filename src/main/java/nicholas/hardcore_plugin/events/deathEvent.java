@@ -49,7 +49,7 @@ public class deathEvent implements Listener {
                 color = 'c';
             }
 
-            Msg.send(e.getPlayer(), "You have " + color + lives + " lives remaining");
+            Msg.send(e.getPlayer(), "&rYou have &" + color +""+ lives + "&r lives remaining");
 
             Hardcore_Plugin.updatePlayers(playerList);
             TeamsManager.assignPlayerToTeam(e.getPlayer(), player.getLives());
