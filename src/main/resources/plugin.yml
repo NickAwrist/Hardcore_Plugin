@@ -2,3 +2,10 @@ name: Hardcore_Plugin
 version: '${project.version}'
 main: nicholas.hardcore_plugin.Hardcore_Plugin
 api-version: '1.20'
+commands:
+  add_lives:
+    description: Adds lives to a player
+    usage: /<command> <player> <amount>
+  set_lives:
+    description: Sets a players lives
+    usage: /<command> <player> <amount>

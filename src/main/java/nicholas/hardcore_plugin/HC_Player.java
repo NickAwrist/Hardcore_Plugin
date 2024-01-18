@@ -42,6 +42,7 @@ public class HC_Player {
     public void setGrace(boolean setting){
         graceEnabled = setting;
     }
+    public void setLives(int lives){this.lives = lives;}
     public void updateCurrentGrace(int update){
         this.currentGrace += update;
     }

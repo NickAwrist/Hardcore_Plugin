@@ -21,8 +21,7 @@ public class respawnEvent implements Listener {
         HC_Player hcp = playerList.get(playerUUID);
 
         if(hcp.getGraceEnabled()){
-            Msg.send(e.getPlayer(), "&rYou have died during your grace period. You have &l&2"+hcp.getCurrentGrace()+"&r minutes remaining in your grace period.");
-        }
+            Msg.send(e.getPlayer(), "&rYou have died during your grace period. You have &l&2"+hcp.getCurrentGrace()+"&r minutes remaining in your grace period.");}
 
     }
 }
