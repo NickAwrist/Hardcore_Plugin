@@ -9,3 +9,6 @@ commands:
   set_lives:
     description: Sets a players lives
     usage: /<command> <player> <amount>
+  hc_top:
+    description: Shows the top 10 players with the most lives
+    usage: /<command> <page>

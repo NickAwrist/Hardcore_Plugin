@@ -66,8 +66,14 @@ public class addLivesCommand implements CommandExecutor {
             Bukkit.getLogger().info(target.getName()+" now has "+hcp.getLives()+" lives");
         }
 
+        char color = '7';
+        if(updateVal > 0) {
+            color = 'a';
+        }else if(updateVal < 0){
+            color = 'c';
+        }
         if(target.isOnline()){
-            Msg.send(target, "&rYou have gained "+updateVal+" lives.");
+            Msg.send(target, "&rYou have gained &"+color+updateVal+" lives.");
             target.playSound(target.getLocation(), "minecraft:block.note_block.pling", 1.0F, 2.0F);
         }
 

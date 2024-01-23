@@ -67,7 +67,7 @@ public class setLivesCommand implements CommandExecutor {
         }
 
         if(target.isOnline()){
-            Msg.send(target, "&rYou now have "+updateVal+" lives.");
+            Msg.send(target, "&rYou now have &a"+updateVal+"&r lives.");
             target.playSound(target.getLocation(), "minecraft:block.note_block.pling", 1.0F, 2.0F);
         }
 

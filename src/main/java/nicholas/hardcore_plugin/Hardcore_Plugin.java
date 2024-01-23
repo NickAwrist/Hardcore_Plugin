@@ -1,6 +1,7 @@
 package nicholas.hardcore_plugin;
 
 import nicholas.hardcore_plugin.commands.addLivesCommand;
+import nicholas.hardcore_plugin.commands.hcTopCommand;
 import nicholas.hardcore_plugin.commands.setLivesCommand;
 import nicholas.hardcore_plugin.events.deathEvent;
 import nicholas.hardcore_plugin.events.joinEvent;
@@ -45,6 +46,7 @@ public final class Hardcore_Plugin extends JavaPlugin {
 
         this.getCommand("add_lives").setExecutor(new addLivesCommand());
         this.getCommand("set_lives").setExecutor(new setLivesCommand());
+        this.getCommand("hc_top").setExecutor(new hcTopCommand());
 
         TeamsManager.setupScoreboard();
 
