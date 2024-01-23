@@ -1,13 +1,15 @@
 package nicholas.hardcore_plugin;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 import java.util.UUID;
 
 
-public class HC_Player {
+public class HC_Player implements Comparable {
 
     private int lives;
     private final String player;
@@ -61,4 +63,9 @@ public class HC_Player {
         return Objects.hash(playerUUID);
     }
 
+    @Override
+    public int compareTo(@NotNull Object o) {
+        HC_Player hcPlayer = (HC_Player) o;
+        return Integer.compare(this.lives, hcPlayer.getLives());
+    }
 }
